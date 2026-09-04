@@ -39,7 +39,7 @@ export function Hero() {
     return () => clearInterval(id);
   }, [paused]);
 
-  const slide = slides[index];
+  const slide = slides[index]!;
 
   return (
     <section
