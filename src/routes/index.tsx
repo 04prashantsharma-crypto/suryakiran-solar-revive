@@ -1,24 +1,87 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Toaster } from "@/components/ui/sonner";
+import { Header } from "@/components/site/Header";
+import { Hero } from "@/components/site/Hero";
+import { Highlights } from "@/components/site/Highlights";
+import { About } from "@/components/site/About";
+import { Sectors } from "@/components/site/Sectors";
+import { Products } from "@/components/site/Products";
+import { Process } from "@/components/site/Process";
+import { Gallery } from "@/components/site/Gallery";
+import { Testimonials } from "@/components/site/Testimonials";
+import { WhyChooseUs } from "@/components/site/WhyChooseUs";
+import { Contact } from "@/components/site/Contact";
+import { Footer } from "@/components/site/Footer";
+import { FloatingActions } from "@/components/site/FloatingActions";
+import { companyInfo } from "@/config/company";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const title = "Solar Company in Dehradun | Surya Kiran Solutions";
+const description =
+  "Surya Kiran Solutions offers solar panel installation, rooftop solar, hybrid inverters and solar energy solutions in Dehradun, Uttarakhand. Call +91 70171 73974.";
+
 export const Route = createFileRoute("/")({
-  component: Index,
+  component: HomePage,
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      {
+        name: "keywords",
+        content:
+          "Solar Company in Dehradun, Solar Panel Installation in Dehradun, Solar Energy Solutions in Dehradun, Rooftop Solar in Dehradun, Solar Products in Uttarakhand",
+      },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: companyInfo.name,
+          description,
+          telephone: companyInfo.phone,
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: companyInfo.street,
+            addressLocality: companyInfo.city,
+            addressRegion: companyInfo.state,
+            postalCode: companyInfo.postalCode,
+            addressCountry: companyInfo.country,
+          },
+          areaServed: "Dehradun, Uttarakhand",
+        }),
+      },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+function HomePage() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background">
+      <Header />
+      <main>
+        <Hero />
+        <Highlights />
+        <About />
+        <Sectors />
+        <Products />
+        <Process />
+        <Gallery />
+        <Testimonials />
+        <WhyChooseUs />
+        <Contact />
+      </main>
+      <Footer />
+      <FloatingActions />
+      <Toaster position="top-center" />
     </div>
   );
 }
