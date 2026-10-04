@@ -1,5 +1,5 @@
 import { MapPin, MessageCircle, Phone } from "lucide-react";
-import logo from "@/assets/sks-logo.png.asset.json";
+import logo from "@/assets/sks-logo-new.png.asset.json";
 import { Reveal } from "@/components/motion/Reveal";
 import { companyInfo } from "@/config/company";
 
