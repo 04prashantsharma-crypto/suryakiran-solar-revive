@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ChevronDown, Menu, Phone, X } from "lucide-react";
-import logo from "@/assets/sks-logo.png.asset.json";
+import logo from "@/assets/sks-logo-new.png.asset.json";
 import { companyInfo, productLinks, serviceLinks } from "@/config/company";
 
 const navItems = [
